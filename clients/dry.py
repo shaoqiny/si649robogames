@@ -63,6 +63,6 @@ def vis_network_dry(rid, tree, network, robots):
 		cmap='accent',
 		edge_color='#d7dcde',
 		node_tooltip = ['id','owner'],
-	).properties(width=200, height=200)
+	)
 		
-	return (socialnetwork_chart | family_chart)
+	return family_chart
