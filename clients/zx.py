@@ -39,19 +39,11 @@ def vis_network_zx(pick_node, network, robot):
     brush = alt.selection_interval(encodings=['x', 'y'])
     color = alt.Color('winner:N',  legend=None)
 
-    # id_dropdown
-    options = list(nodes.data.id)
-    id_dropdown = alt.binding_select(options=options, name="id")
-    id_select = alt.selection_single(fields=['id'], bind=id_dropdown, name="id")
-
     # Condition nodes based on brush
     nodes = nodes.encode(
         fill=alt.condition(brush, color, alt.value('gray')),
     ).add_selection(
         brush,
-        id_select
-    ).transform_filter(
-        id_select
     )
 
     # Create a bar graph to show highlighted nodes.
@@ -61,8 +53,6 @@ def vis_network_zx(pick_node, network, robot):
         color='winner',
     ).transform_filter(
         brush
-    ).transform_filter(
-        id_select
     )
 
     bars_text = bars.mark_text(align='left',dx=2).encode(
