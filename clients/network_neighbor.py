@@ -18,13 +18,13 @@ for n in G.nodes():
     G.nodes[n]['winner'] = str(int(robotInfo[robotInfo['id']==n].winner))
 
 # ### choose your interested node
-pick_node = 1
+pick_node = None
 
-if pick_node:
+if pick_node != None:
     neighbors = [n for n in G.neighbors(pick_node)] + [pick_node] 
     g = G.subgraph(neighbors)
 else:
-    g=G
+    g = G
 
 pos = nx.spring_layout(g)
 
