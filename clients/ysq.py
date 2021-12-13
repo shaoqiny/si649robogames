@@ -10,8 +10,8 @@ import nx_altair as nxa
 #新增关于productivity和time的dataframe
 
 def plot_productivity_time(robots, cur_time, data_list):
-    item1 = {'team': "team 1", 'time': cur_time, 'productivity': robots[robots.winner == 1]['Productivity'].sum()}
-    item2 = {'team': "team 2", 'time': cur_time, 'productivity': robots[robots.winner == 2]['Productivity'].sum()}
+    item1 = {'team': "team1", 'time': cur_time, 'productivity': robots[robots.winner == 1]['Productivity'].sum()}
+    item2 = {'team': "team2", 'time': cur_time, 'productivity': robots[robots.winner == 2]['Productivity'].sum()}
     data_list.append(item1)
     data_list.append(item2)
     df = pd.DataFrame(data_list)
@@ -21,7 +21,7 @@ def plot_productivity_time(robots, cur_time, data_list):
     line = alt.Chart(df).mark_line(interpolate='basis').encode(
         x='time:Q',
         y='productivity:Q',
-        color='id:N'
+        color='team:N'
     ).properties(width=600)
 
     selectors = alt.Chart(df).mark_point().encode(
