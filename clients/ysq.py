@@ -21,7 +21,7 @@ def plot_productivity_time(robots, cur_time, data_list):
     line = alt.Chart(df).mark_line(interpolate='basis').encode(
         x='time:Q',
         y='productivity:Q',
-        color='id:N'
+        color='ysq:N'
     ).properties(width=600)
 
     selectors = alt.Chart(df).mark_point().encode(
